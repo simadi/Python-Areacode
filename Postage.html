@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>中国邮政普通包裹价格计算器</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        ul {
+            margin-top: -15px;
+            list-style: none;
+            width: 150px;
+        }
+        li {
+            width: 60px;
+            float: left;
+        }
+        li:hover {
+            color: blue;
+            cursor: pointer;
+        }
+        .selected {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<table align="center" >
+    <tr>
+        <td><ul id="fromArea"></ul></td>
+        <td><img src="a.png" width="50" height="40"/></td>
+        <td><ul id="toArea"></ul></td>
+        <td>
+            重量:<input id="kg" size="5" value="0.0" />公斤<br>
+            包装材料费:<input id="bao" size="5" value="0.0" />元<br>
+            <button id="jisuan">计算</button><br>
+            <span id="jieguo"></span>
+        </td>
+    </tr>
+</table>
+</body>
+<script src="PostageData.js"></script>
+</html>

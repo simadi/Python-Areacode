@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    td {
+        width: 25%;
+    }
+</style>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<body>
+    <table border="1" cellpadding="0" cellspacing="0" style="width: 100%;">
+        <tr>
+            <td>物品</td>
+            <td>数量</td>
+            <td>金额</td>
+            <td>备注</td>
+        </tr>
+        <tr>
+            <td><span id="clothSpan" style="cursor: pointer">+</span>&emsp;<span>服装</span></td>
+            <td>100件</td>
+            <td>12000元</td>
+            <td></td>
+        </tr>
+        <tr style="display: none">
+            <td></td>
+            <td colspan="3" style="width: 75%">
+                <div>
+                    <table border="1" style="position: relative;width: 500px;height: 100px;left: 30%;margin-top: 25px">
+                        <tr>
+                            <td>明细</td>
+                            <td>数量</td>
+                            <td>单价</td>
+                            <td>备注</td>
+                        </tr>
+                        <tr>
+                            <td>外套</td>
+                            <td>10</td>
+                            <td>300</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>裤子</td>
+                            <td>90</td>
+                            <td>100</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span id="fruitSpan" style="cursor: pointer">+</span>&emsp;<span>水果</span></td>
+            <td>100KG</td>
+            <td>290元</td>
+            <td></td>
+        </tr>
+
+        <tr style="display: none">
+            <td></td>
+            <td colspan="3" style="width: 75%">
+                <table border="1" style="position: relative;width: 500px;height: 100px;left: 30%;margin-top: 25px">
+                    <tr>
+                        <td>明细</td>
+                        <td>重量</td>
+                        <td>单价</td>
+                        <td>备注</td>
+                    </tr>
+                    <tr>
+                        <td>西瓜</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>柚子</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+    var showElement = function (event) {
+        console.log(event);                 //这个event是Jquery的event，包含了很多
+        console.log(event.data.spanElement);//我们参数的值就按键值对放在event.data里
+        console.log(event.data.aaa);
+        console.log(event.data.bbb);
+        var tr = event.data.spanElement.parentElement.parentElement;
+        var nextTr = tr.nextElementSibling;
+        if (nextTr.style.display === "none") {
+            nextTr.style.display = "table-row";
+            tr.cells[0].firstChild.textContent = "-";
+        } else {
+            nextTr.style.display = "none";
+            tr.cells[0].firstChild.textContent = "+";
+        }
+    };
+
+    var arg1 = {
+        spanElement: document.getElementById("clothSpan"),
+        aaa: 1,
+        bbb: "qwe"
+    }
+    $("#clothSpan").click(arg1, showElement);
+
+    var arg2 = {
+        spanElement: document.getElementById("fruitSpan"),
+    }
+    $("#fruitSpan").click(arg2, showElement);
+
+    //click(data,fn)中的data其实是json对象,取的时候,只能通过当前的事件源来取,
+    // data是默认放在event中的,所以这里的data是eventdata,引用的时候也使用event.data.name,
+    // 也就是说JQuery中的所有触发时间的方法,需要传递参数都可以通过eventdata对象来传递参数:
+</script>
+
+</html>

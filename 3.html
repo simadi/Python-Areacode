@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        function SetData(a) {
+            //alert(a);
+            console.info(a);
+        }
+        $(function () {
+           // $("#city").on("change", function () { alert($(this).val()); });
+
+            $('#city').change(function () {
+                SetData($(this).val());
+                //console.info(event.data.a.length);
+            });
+        });// onchange="SetData(this);"
+    </script>
+</head>
+<body>
+    <select id="city">
+        <option value="12">ffff1</option>
+        <option value="234">ffff2</option>
+    </select>
+</body>
+</html>
